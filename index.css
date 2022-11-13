@@ -1,0 +1,52 @@
+#field{
+    width:100%;
+    height:100%;
+    margin:0;
+    position:absolute;
+    top:0px;
+    left:0px;
+    background-color:black;
+    overflow: hidden;
+}
+.player{
+    background-color: red;
+    position: absolute;
+}
+.playerGun{
+    width: 5px;
+    height: 20px;
+    background-color: green;
+    position: absolute;
+    top:5px;
+    left:10px;
+    transform-origin: center bottom;
+}
+.bullet{
+    height: 2.5px;
+    width: 2.5px;
+    border-radius: 50%;
+    background-color: aquamarine;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+.dulo{
+    position: absolute;
+    background-color: yellow;
+    height: 5px;
+    width: 5px;
+}
+.radius{
+    height: 70px;
+    width: 45px;
+    opacity: 0.3;
+    position: absolute;
+    box-sizing: border-box;
+    border:2px solid yellow;
+    top:calc(50% - 35px);
+    left:calc(50% - 22.5px);
+}
+.mob{
+    background-color: aqua;
+    position: absolute;
+}
