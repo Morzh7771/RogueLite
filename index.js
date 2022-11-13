@@ -39,6 +39,7 @@ let enemys = [
         y:0,
         leftSin:0,
         topCos:0,
+        speed:3,
     }
 ]
 let levelEnemys = []
@@ -52,9 +53,15 @@ function detect(bullet,id){
             cancelAnimationFrame(id)
             bullet.remove()
             damage(x)
+            levelEnemys[x].mobObj.style.backgroundColor = 'red'
+            setTimeout(function(){color(levelEnemys[x].mobObj)}, 120);
+                
             return
         }
     }
+}
+function color(mob){
+    mob.style.backgroundColor = 'aqua'
 }
 function damage(index){
     console.log(levelEnemys[index].hp)
@@ -202,6 +209,7 @@ function createEnemys(){
             y:0,
             leftSin:x,
             topCos:y,
+            speed:enemys[randomMobNum].speed,
         })
 
     }
@@ -237,10 +245,10 @@ function trash(){
             let enemyInfo = levelEnemys[i].mobObj.getBoundingClientRect();
                 levelEnemys[i].x = (enemyInfo.left + enemyInfo.right) / 2;
                 levelEnemys[i].y = (enemyInfo.top + enemyInfo.bottom) / 2;
-                levelEnemys[i].angle = - Math.atan2(levelEnemys[i].x - playerInfo.x , levelEnemys[i].y - playerInfo.y);
-                levelEnemys[i].leftSin += Math.sin(levelEnemys[i].angle)*2;
+                levelEnemys[i].angle = - Math.atan2(levelEnemys[i].x - playerInfo.x - 12.5, levelEnemys[i].y - playerInfo.y - 25);
+                levelEnemys[i].leftSin += Math.sin(levelEnemys[i].angle)*levelEnemys[i].speed;
                 levelEnemys[i].mobObj.style.left = levelEnemys[i].leftSin + 'px';
-                levelEnemys[i].topCos += - Math.cos(levelEnemys[i].angle)*2;
+                levelEnemys[i].topCos += - Math.cos(levelEnemys[i].angle)*levelEnemys[i].speed;
                 levelEnemys[i].mobObj.style.top = levelEnemys[i].topCos + 'px';
         }
     }
